@@ -1,6 +1,6 @@
-Roll'n API
-==========
+Api Archive
+===========
 
-This is an easy to use API creating and serving engine written in PHP.
+This is the data fetchable from archive.org through their RSS feed with createddate > 1970-01-01.
 
-For instructions see http://www.rollnapi.com
+This tool is an implementation of https://www.rollnapi.com
