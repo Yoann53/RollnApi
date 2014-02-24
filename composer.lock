@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "1b2de482617c81627feecf2298f981a5",
+    "hash": "0c69906c78ded34ea023bcf013012acb",
     "packages": [
         {
             "name": "bshaffer/oauth2-server-php",
@@ -51,6 +51,45 @@
                 "oauth2"
             ],
             "time": "2014-02-18 19:19:48"
+        },
+        {
+            "name": "dg/rss-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dg/rss-php.git",
+                "reference": "da0307f86bacc89cb6ba0e651e5deb5e92d6abdb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dg/rss-php/zipball/da0307f86bacc89cb6ba0e651e5deb5e92d6abdb",
+                "reference": "da0307f86bacc89cb6ba0e651e5deb5e92d6abdb",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "http://davidgrudl.com"
+                }
+            ],
+            "description": "RSS & Atom Feeds for PHP is a very small and easy-to-use library for consuming an RSS and Atom feed.",
+            "homepage": "https://github.com/dg/rss-php",
+            "keywords": [
+                "atom",
+                "feed",
+                "rss"
+            ],
+            "time": "2014-01-17 17:12:40"
         },
         {
             "name": "doctrine/annotations",
@@ -2309,7 +2348,8 @@
         "zendframework/zftool": 20,
         "zendframework/zend-developer-tools": 20,
         "zfcampus/zf-apigility-admin": 20,
-        "zfcampus/zf-apigility-welcome": 20
+        "zfcampus/zf-apigility-welcome": 20,
+        "dg/rss-php": 20
     },
     "platform": {
         "php": ">=5.3.3"

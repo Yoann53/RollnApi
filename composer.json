@@ -40,6 +40,7 @@
         "zendframework/zftool": "dev-master",
         "zendframework/zend-developer-tools": "dev-master",
         "zfcampus/zf-apigility-admin": "dev-master",
-        "zfcampus/zf-apigility-welcome": "dev-master"
+        "zfcampus/zf-apigility-welcome": "dev-master",
+        "dg/rss-php": "dev-master"
     }
 }

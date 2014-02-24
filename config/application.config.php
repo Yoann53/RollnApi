@@ -24,6 +24,8 @@ return array(
         'DoctrineDataFixtureModule',
         'ZF\Apigility\Doctrine\Server',
         'Db',
+        'Archive',
+        'DbApi'
         ),
     'module_listener_options' => array(
         'module_paths' => array(
