@@ -1,12 +1,161 @@
 <div class="hero-unit">
-    <h1>ZF API First Application</h1>
-    <p>Hero image here</p>
+    <h1>Api Archive</h1>
 </div>
 
 <div class="row">
     <div class="span12">
-        <h2>Getting Started</h2>
-        <p>It it important that your application be put into development mode in order to start using the ZF API First Administration screens to assist building your app.</p>
-        <p>Currently, your application <b><?php echo (class_exists('ZF\ApiFirstAdmin\Module', false)) ? 'IS' : 'IS NOT' ?></b> in development mode.  Here are some instructions on how to do it:</p>
+        <h2>What is this?</h2>
+        <p>This site is an API of all available data from the RSS feed of archive.org including a url directly to the files stored for an identifier.
     </div>
+
+    <div class="span12">
+        <h2>Collection Queries</h2>
+        <p>
+        It is possible to query collections by relations - just supply the relation name as `fieldName` and
+        identifier as `value`.
+
+        1. Using an RPC created by this module for each collection on each resource: /resource/id/childresource/child_id
+
+        2. Assuming we have defined 2 entities, `User` and `UserGroup`...
+        </p>
+
+        ````php
+        /**
+         * @Entity
+          */
+          class User {
+                  /**
+                       * @ManyToOne(targetEntity="UserGroup")
+                            * @var UserGroup
+                                 */
+                                     protected $group;
+          }
+          ````
+
+          ````php
+          /**
+           * @Entity
+            */
+            class UserGroup {}
+            ````
+
+            ... we can find all users that belong to UserGroup id #1 with the following query:
+
+            ````php
+                $url = 'http://localhost:8081/api/db/entity/user';
+                    $query = http_build_query(array(
+                            array('type' => 'eq', 'field' => 'group', 'value' => '1')
+                                ));
+                    ````
+
+
+                    Expanding Collections * in development *
+                    ---------------------
+
+                    You may include in the _GET[zoom] an array of field names which are collections 
+                    to return instead of a link to the collection.
+
+                    ```
+                        /api/user_data?zoom%5B0%5D=UserGroup
+                        ```
+
+                        Format of Date Fields
+                        ---------------------
+
+                        When a date field is involved in a query you may specify the format of the date
+                        using PHP date formatting options.  The default date format is ```Y-m-d H:i:s```
+                        If you have a date field which is just Y-m-d then add the format to the query.
+
+                        ```php
+                            'format' => 'Y-m-d', 
+                                'value' => '2014-02-04',
+                                ```
+
+                                Available Query Types
+                                ---------------------
+
+                                ORM and ODM
+
+                                Equals
+
+                                ```php
+                                    array('type' => 'eq', 'field' => 'fieldName', 'value' => 'matchValue')
+                                    ```
+
+                                    Not Equals
+
+                                    ```php
+                                        array('type' => 'neq', 'field' => 'fieldName', 'value' => 'matchValue')
+                                        ```
+
+                                        Less Than
+
+                                        ```php
+                                            array('type' => 'lt', 'field' => 'fieldName', 'value' => 'matchValue')
+                                            ```
+
+                                            Less Than or Equals
+
+                                            ```php
+                                                array('type' => 'lte', 'field' => 'fieldName', 'value' => 'matchValue')
+                                                ```
+
+                                                Greater Than
+
+                                                ```php
+                                                    array('type' => 'gt', 'field' => 'fieldName', 'value' => 'matchValue')
+                                                    ```
+
+                                                    Greater Than or Equals
+
+                                                    ```php
+                                                        array('type' => 'gte', 'field' => 'fieldName', 'value' => 'matchValue')
+                                                        ```
+
+                                                        Is Null
+
+                                                        ```php
+                                                            array('type' => 'isnull', 'field' => 'fieldName')
+                                                            ```
+
+                                                            Is Not Null
+
+                                                            ```php
+                                                                array('type' => 'isnotnull', 'field' => 'fieldName')
+                                                                ```
+
+                                                                In
+
+                                                                ```php
+                                                                    array('type' => 'in', 'field' => 'fieldName', 'values' => array(1, 2, 3))
+                                                                    ```
+
+                                                                    NotIn
+
+                                                                    ```php
+                                                                        array('type' => 'notin', 'field' => 'fieldName', 'values' => array(1, 2, 3))
+                                                                        ```
+
+                                                                        Between
+
+                                                                        ```php
+                                                                            array('type' => 'between', 'field' => 'fieldName', 'from' => 'startValue', 'to' => 'endValue')
+                                                                            ````
+
+                                                                            Like (% is used as a wildcard)
+
+                                                                            ```php
+                                                                                array('type' => 'like', 'field' => 'fieldName', 'value' => 'like%search')
+                                                                                ```
+
+                                                                                Decimation (mod(field, value) = 0 e.g. value = 10 fetch one of every ten rows)
+
+                                                                                ```php
+                                                                                    array('type' => 'decimation', 'field' => 'fieldName', 'value' => 'decimationModValue')
+                                                                                    ```
+                                                                                    Not Like (% is used as a wildcard)
+                                                                                    ```php
+                                                                                        array('type' => 'notlike', 'field' => 'fieldName', 'value' => 'notlike%search')
+                                                                                        ```
+
 </div>
