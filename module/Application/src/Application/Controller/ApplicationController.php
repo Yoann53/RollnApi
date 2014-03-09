@@ -116,16 +116,8 @@ class ApplicationController extends AbstractActionController
         }
 
         // Truncate tables
-        try {
-            unlink(__DIR__ . '/../../../../../data/Database/rollnapi.db');
-        }catch(DBALException $e){
-            $console->writeLine();
-            $console->writeLine(sprintf(
-                "A DB exception occured!\n%s: %s",
-                get_class($e),
-                $e->getMessage()
-            ), ColorInterface::YELLOW);
-            throw $e;
+        if (file_exists(__DIR__ . '/../../../../../data/Database/rollnapi.db')) {
+            @unlink(__DIR__ . '/../../../../../data/Database/rollnapi.db');
         }
 
         $console->writeLine('All done! Tables have been dropped.', ColorInterface::GREEN);
@@ -179,7 +171,10 @@ class ApplicationController extends AbstractActionController
 
         foreach($metadataFactory->getAllMetadata() as $metadata) {
             if (substr($metadata->getName(), strlen($metadata->namespace) + 1, 8) == 'Abstract')
+            {
                 continue;
+            }
+
             $entityClassNames[] = $metadata->getName();
         }
 
@@ -236,6 +231,32 @@ class ApplicationController extends AbstractActionController
                 'hydratorName' => $hydratorName,
                 'hydrateByValue' => true,
             ));
+
+            foreach ($entityMetadata->associationMappings as $mapping) {
+                switch ($mapping['type']) {
+                    case 4:
+                        $rpcServiceResource = $this->getServiceLocator()->get('ZF\Apigility\Doctrine\Admin\Model\DoctrineRpcServiceResource');
+                        $rpcServiceResource->setModuleName($moduleName);
+                        $rpcServiceResource->create(array(
+                            'service_name' => $resourceName . '' . $mapping['fieldName'],
+                            'route' => $mappingRoute = $route . '[/:parent_id]/' . $filter($mapping['fieldName']) . '[/:child_id]',
+                            'http_methods' => array(
+                                'GET',
+                            ),
+                            'options' => array(
+                                'target_entity' => $mapping['targetEntity'],
+                                'source_entity' => $mapping['sourceEntity'],
+                                'field_name' => $mapping['fieldName'],
+                            ),
+                        ));
+
+                        $results[$entityMetadata->name . $mapping['fieldName']] = $mappingRoute;
+
+                        break;
+                    default:
+                        break;
+                }
+            }
 
             $results[$entityMetadata->name] = $route;
         }
