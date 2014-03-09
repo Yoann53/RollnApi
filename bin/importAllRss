@@ -1,6 +1,6 @@
 #!/bin/bash
 COUNTER=1;
-until [ $COUNTER -gt 250 ]; do
+until [ $COUNTER -gt 140 ]; do
     php public/index.php import rss $COUNTER
     let COUNTER++
 done
