@@ -1,55 +1,6 @@
 <?xml version="1.0"?>
-<orm-designer version="2.3.0.836" name="RollNApi" mvc="Without MVC" orm="Doctrine2" uuid="09c94d6b-1592-49e6-8ffa-58dd6621f1e4">
+<orm-designer version="2.3.5.881" name="RollNApi" mvc="Without MVC" orm="Doctrine2" uuid="09c94d6b-1592-49e6-8ffa-58dd6621f1e4">
   <module name="Db" import-format="Doctrine2Xml" import-path="../module/Db/config/xml" uuid="30851194-2020-4670-afa0-aba4a3feb3e9">
-    <entity name="Item" uuid="8f7f0465-f992-401a-948b-82b35737028b">
-      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="e534ad07-0fed-48d2-b53e-7122e7b13434"/>
-      <field name="guid" type="string" required="true" unique="true" uuid="9597b09a-d6b7-4862-91f7-4068cc466708"/>
-      <field name="title" type="string" uuid="f0fcdcf2-359f-4e59-ad73-7b59c0dfc67c"/>
-      <field name="description" type="text" uuid="9c33004b-c807-4897-9326-f978f9c65de5"/>
-      <field name="link" type="string" uuid="24cb8e8e-8bac-4f89-9174-0f24e4568b8a"/>
-      <field name="pubDate" type="datetime" uuid="1b955dd2-59ed-4d6f-bf6b-27010c69aa9f"/>
-      <field name="category_id" type="integer" required="true" uuid="fc63e4e1-dba0-4776-a36a-557c5607a19a"/>
-      <field name="url" type="string" uuid="ac54600f-cf50-46aa-81d7-f65e1757927d"/>
-    </entity>
-    <association from="Item" to="Category" owner-alias="item" inverse-alias="category" uuid="4ea926ba-340c-45dd-828f-f8a24dc57ec1">
-      <association-field from="category_id" to="id"/>
-    </association>
-    <entity name="Category" uuid="eb8559f7-b2f1-4210-8a00-046e28c1b92c">
-      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="03fa6cff-3aee-4740-9e19-673aba34fad1"/>
-      <field name="name" type="string" uuid="27f9b0e8-245c-4d1e-a522-a3ba98316f2a"/>
-    </entity>
-    <entity name="Keyword" uuid="a4df208f-800c-42e7-b085-ac684c8ed8ac">
-      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="19d70a2e-055d-44ee-a2cf-d9bf9b890b12"/>
-      <field name="name" type="string" uuid="08eadda1-64f9-406e-b68d-5516fcfb89cd"/>
-    </entity>
-    <entity name="Enclosure" uuid="8d8d31c9-b45d-45f0-83ed-f82a9916bb01">
-      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="c3aedc45-37cb-4aa4-9f94-4d9ad3584188"/>
-      <field name="url" type="string" uuid="30531f07-c3fc-4dd9-853d-0e9a47a8af2b"/>
-      <field name="length" type="integer" uuid="4cf790ec-317f-42bf-bd13-1b42b6839ece"/>
-      <field name="enclosure_type_id" type="integer" required="true" uuid="6b22e642-668e-4dd0-9117-fba91e4e59b2"/>
-      <field name="item_id" type="integer" required="true" uuid="13298f65-082d-4b06-9402-8a7c42933f60"/>
-    </entity>
-    <association from="Enclosure" to="EnclosureType" owner-alias="enclosure" inverse-alias="enclosureType" uuid="43a8d5b4-422c-46c5-864b-ce74a0834405">
-      <association-field from="enclosure_type_id" to="id"/>
-    </association>
-    <association from="Enclosure" to="Item" owner-alias="enclosure" inverse-alias="item" uuid="5703cfe9-11b5-4743-9aaf-f914e66ff92e">
-      <association-field from="item_id" to="id"/>
-    </association>
-    <entity name="EnclosureType" uuid="4abf4911-91da-412b-9489-448b2a168e1e">
-      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="7f50b53c-9ec4-4bc1-9e69-b263057edaf2"/>
-      <field name="name" type="string" uuid="fd6f49cc-1dce-474a-98f0-50338a5527d9"/>
-    </entity>
-    <entity name="ItemToKeyword" uuid="a8e21b41-ab57-437f-a2b8-c1ce1c8c83d3">
-      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="27053178-39d1-4f7a-9119-44ef422eff40"/>
-      <field name="keyword_id" type="integer" uuid="5cb35acd-9bca-465c-bfc8-b14462fc784c"/>
-      <field name="item_id" type="integer" uuid="81cb22e1-2368-4cc8-a99d-5599bad60332"/>
-    </entity>
-    <association from="ItemToKeyword" to="Keyword" owner-alias="itemToKeyword" inverse-alias="keyword" uuid="34e08091-0298-416d-b44e-68bc7d1de6e1">
-      <association-field from="keyword_id" to="id"/>
-    </association>
-    <association from="ItemToKeyword" to="Item" owner-alias="itemToKeyword" inverse-alias="item" uuid="efadd195-8fc9-4ac3-8a03-4b43f63ce878">
-      <association-field from="item_id" to="id"/>
-    </association>
     <orm-attributes>
       <attribute name="namespace">Db\Entity</attribute>
     </orm-attributes>
@@ -57,16 +8,5 @@
   <visual-data>
     <project uuid="09c94d6b-1592-49e6-8ffa-58dd6621f1e4" size-x="0" size-x2="809" size-y="0" size-y2="633"/>
     <module uuid="30851194-2020-4670-afa0-aba4a3feb3e9" bk-color="4294638066" position-x="61" position-y="72" size-x="11" size-x2="713" size-y="22" size-y2="527"/>
-    <association uuid="34e08091-0298-416d-b44e-68bc7d1de6e1" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0"/>
-    <association uuid="43a8d5b4-422c-46c5-864b-ce74a0834405" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0"/>
-    <entity uuid="4abf4911-91da-412b-9489-448b2a168e1e" position-x="251" position-y="435" size-x="0" size-x2="77" size-y="0" size-y2="45"/>
-    <association uuid="4ea926ba-340c-45dd-828f-f8a24dc57ec1" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0"/>
-    <association uuid="5703cfe9-11b5-4743-9aaf-f914e66ff92e" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0"/>
-    <entity uuid="8d8d31c9-b45d-45f0-83ed-f82a9916bb01" position-x="223" position-y="262" size-x="0" size-x2="133" size-y="0" size-y2="87"/>
-    <entity uuid="8f7f0465-f992-401a-948b-82b35737028b" position-x="236" position-y="101" size-x="0" size-x2="106" size-y="0" size-y2="101"/>
-    <entity uuid="a4df208f-800c-42e7-b085-ac684c8ed8ac" position-x="52" position-y="243" size-x="0" size-x2="77" size-y="0" size-y2="45"/>
-    <entity uuid="a8e21b41-ab57-437f-a2b8-c1ce1c8c83d3" position-x="38" position-y="122" size-x="0" size-x2="105" size-y="0" size-y2="59"/>
-    <entity uuid="eb8559f7-b2f1-4210-8a00-046e28c1b92c" position-x="65" position-y="21" size-x="0" size-x2="77" size-y="0" size-y2="45"/>
-    <association uuid="efadd195-8fc9-4ac3-8a03-4b43f63ce878" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0"/>
   </visual-data>
 </orm-designer>
