@@ -7,26 +7,31 @@
 return array(
     'modules' => array(
         'Application',
+        'ZF\DevelopmentMode',
         'ZF\Apigility',
-        'ZF\Apigility\Welcome',
+        'ZF\Apigility\Provider',
+        'ZF\Apigility\Documentation',
         'AssetManager',
         'ZF\ApiProblem',
         'ZF\MvcAuth',
         'ZF\OAuth2',
         'ZF\Hal',
         'ZF\ContentNegotiation',
+        'ZF\ContentValidation',
         'ZF\Rest',
         'ZF\Rpc',
-        'ZF\Configuration',
         'ZF\Versioning',
+
         'DoctrineModule',
         'DoctrineORMModule',
         'DoctrineDataFixtureModule',
+        'ZF\Apigility\Doctrine\Admin',
         'ZF\Apigility\Doctrine\Server',
+        'Phpro\DoctrineHydrationModule',
+
         'Db',
-        'Archive',
         'DbApi'
-        ),
+    ),
     'module_listener_options' => array(
         'module_paths' => array(
             './module',
