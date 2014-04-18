@@ -217,19 +217,15 @@ class ApplicationController extends AbstractActionController
                 $route = '/' . $routePrefix . '/' . $filter($resourceName);
             }
 
-            $hydratorName = $moduleName . '\\V1\\Rest\\' . $resourceName . '\\' . $resourceName . 'Hydrator';
-
             $serviceResource->setModuleName($moduleName);
             $serviceResource->create(array(
                 'objectManager' => $objectManagerAlias,
-                'resourceName' => $resourceName,
+                'serviceName' => $resourceName,
                 'entityClass' => $entityMetadata->name,
                 'pageSizeParam' => 'limit',
-                'identifierName' => $filter($resourceName) . '_id',
+                'routeIidentifierName' => $filter($resourceName) . '_id',
                 'entityIdentifierName' => array_pop($entityMetadata->identifier),
                 'routeMatch' => $route,
-                'hydratorName' => $hydratorName,
-                'hydrateByValue' => true,
             ));
 
             foreach ($entityMetadata->associationMappings as $mapping) {
