@@ -1,6 +1,7 @@
-Api Archive
-===========
+Roll'n API
+==========
 
-This is the data fetchable from archive.org through their RSS feed with createddate > 1970-01-01.
+This is a light skeleton for an Apigility and Doctrine API.  This skeleton is used in conjunction
+with the talk http://rollnapi.com given by [Tom Anderson](https://about.me/tom_h_anderson).  
 
-This tool is an implementation of https://www.rollnapi.com
+
