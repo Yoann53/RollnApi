@@ -159,7 +159,7 @@ class ApplicationController extends AbstractActionController
 
         if(!$this->getServiceLocator()->get('Zend\ModuleManager\ModuleManager')->getModule($moduleName)){
             $this->getConsole()->writeLine(sprintf(
-                'Module %s is not loaded. Did you forget to run "./abe build api module" ?',
+                'Module %s is not loaded. Did you forget to run "./app build api module" ?',
                 $moduleName
             ), ColorInterface::YELLOW);
             return;
