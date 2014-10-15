@@ -24,12 +24,10 @@
         {
             "type": "vcs",
             "url": "git@github.com:etreedb/etreedb-db"
-        }
+        },
     ],
     "require": {
         "php": ">=5.3.23",
-        "zendframework/zendframework": "dev-develop",
-
         "bshaffer/oauth2-server-php": "dev-develop",
         "rwoverdijk/assetmanager": "~1.3",
         "zendframework/zendframework": "~2.3",
@@ -48,7 +46,7 @@
         "zfcampus/zf-versioning": "~1.0-dev",
         "dg/rss-php": "dev-master",
 
-	"zfcampus/zf-apigility-doctrine": "dev-master",
+	    "zfcampus/zf-apigility-doctrine": "dev-master",
         "doctrine/doctrine-orm-module": "*"
     },
     "require-dev": {
