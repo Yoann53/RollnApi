@@ -45,7 +45,7 @@ class Album
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -69,7 +69,7 @@ class Album
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -79,7 +79,7 @@ class Album
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -103,12 +103,11 @@ class Album
     /**
      * Get artist
      *
-     * @return \Db\Entity\Artist 
+     * @return \Db\Entity\Artist
      */
     public function getArtist()
     {
         return $this->artist;
     }
-    
 }
 
