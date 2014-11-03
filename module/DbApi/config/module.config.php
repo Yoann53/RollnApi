@@ -201,4 +201,27 @@ return array(
             'field_name' => 'album',
         ),
     ),
+    'zf-content-validation' => array(
+        'DbApi\\V1\\Rest\\Album\\Controller' => array(
+            'input_filter' => 'DbApi\\V1\\Rest\\Album\\Validator',
+        ),
+    ),
+    'input_filter_specs' => array(
+        'DbApi\\V1\\Rest\\Album\\Validator' => array(
+            0 => array(
+                'name' => 'name',
+                'required' => false,
+                'filters' => array(),
+                'validators' => array(),
+                'allow_empty' => false,
+                'continue_if_empty' => false,
+            ),
+            1 => array(
+                'name' => 'test',
+                'required' => true,
+                'filters' => array(),
+                'validators' => array(),
+            ),
+        ),
+    ),
 );

@@ -12,7 +12,6 @@ return array(
         'ZF\Apigility\Welcome',
         'ZF\Configuration',
         'ZF\Apigility\Doctrine\Admin',
-        //'ApigilityXml',
     ),
     // development time configuration globbing
     'module_listener_options' => array(
